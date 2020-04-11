@@ -1,0 +1,19 @@
+[image]
+image_width = 28
+image_height = 28
+
+[network]
+iterator_times = 100
+input_dim = 784
+hidden_dim = 200
+output_dim = 10
+learn_rate = 0.1
+
+[datapath]
+train_path = ../config/train.txt
+test_path = ../config/test.txt
+train_dataset_path = ../config/train_dataset.txt
+test_dataset_path = ../config/test_dataset.txt
+save_path = ../data/train_data.txt
+mnist_train_path = ../mnist_dataset/mnist_train.csv
+mnist_test_path = ../mnist_dataset/mnist_test.csv
