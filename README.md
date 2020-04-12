@@ -12,7 +12,7 @@
 ├── data
 │   └── train_data.txt      // 保存训练完成后的权值矩阵
 ├── demo
-│   ├── demo.py             // 训练并识别
+│   ├── demo.py             // 训练并测试，保存权值矩阵
 │   └── detector_demo.py    // 读取保存的权值矩阵进行识别
 ├── image                   // 数据集
 │   ├── num_test
@@ -36,7 +36,7 @@
 ## 运行步骤
 ```
 - cd demo
-- python demo.py    // 训练并识别
+- python demo.py    // 训练并识别，保存权值矩阵
 - python3 detector.py // 读取训练数据识别
 ```
 
