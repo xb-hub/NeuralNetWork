@@ -3,8 +3,8 @@ import scipy.special
 from config import Config
 
 class NeuralNetWork:
-    def __init__(self):
-        self.config = Config('../config/config.txt')
+    def __init__(self, config_path):
+        self.config = Config(config_path)
         self.inputnodes = self.config.input_dim
         self.hiddennodes = self.config.hidden_dim
         self.outputnodes = self.config.output_dim

@@ -3,8 +3,8 @@ import imageio
 from net_work.config import Config
 
 class DataProcess:
-    def __init__(self):
-        self.config = Config('../config/config.txt')
+    def __init__(self, config_path):
+        self.config = Config(config_path)
         self.train_path = self.config.train_path
         self.test_path = self.config.test_path
         pass
@@ -42,7 +42,7 @@ class DataProcess:
         pass
 
 def main():
-    data_process = DataProcess()
+    data_process = DataProcess("../config/config.txt")
     data_process.read_train_image()
     data_process.read_test_image()
     pass

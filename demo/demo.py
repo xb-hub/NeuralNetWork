@@ -1,7 +1,7 @@
 from net_work.net_work import NeuralNetWork
 
 def main():
-    network = NeuralNetWork()
+    network = NeuralNetWork("../config/config.txt")
     network.process()
     network.detector()
     pass
