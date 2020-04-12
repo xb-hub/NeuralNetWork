@@ -1,8 +1,10 @@
 import numpy as np
 import scipy.special
+import imageio
 from config import Config
 
 class NeuralNetWork:
+    # 初始化BP神经网络
     def __init__(self, config_path):
         self.config = Config(config_path)
         self.inputnodes = self.config.input_dim
@@ -15,6 +17,7 @@ class NeuralNetWork:
         self.wih = np.random.normal(0.0, pow(self.inputnodes, -0.5), (self.hiddennodes, self.inputnodes))
         self.who = np.random.normal(0.0, pow(self.hiddennodes, -0.5), (self.outputnodes, self.hiddennodes))
 
+    # 训练图片
     def train(self, train_data, target_data):
         inputs = np.array(train_data, ndmin=2).T
         targets = np.array(target_data, ndmin=2).T
@@ -34,6 +37,7 @@ class NeuralNetWork:
                                         np.transpose(inputs))
         pass
 
+    # 训练数据集
     def process(self):
         print("trainning data...")
         file = open(self.config.train_dataset_path)
@@ -45,11 +49,12 @@ class NeuralNetWork:
                 target_data = np.zeros(self.config.output_dim) + 0.01
                 target_data[int(all_values[0])] = 0.99
                 self.train(train_data, target_data)
-            print("迭代次数：" + str(e) + '\n')
+            print("迭代次数：", e)
         self.save_train_data()
         file.close()
         pass
 
+    # 分类
     def query(self, test_data):
         inputs = np.array(test_data, ndmin = 2).T
 
@@ -63,6 +68,7 @@ class NeuralNetWork:
         return label
         pass
 
+    # 识别测试集
     def detector(self):
         print("detectoring data...")
         file = open(self.config.test_dataset_path)
@@ -72,9 +78,9 @@ class NeuralNetWork:
             all_values = num.split(',')
             test_data = (np.asfarray(all_values[1:]) / 255.0 * 0.99) + 0.01
             label = int(all_values[0])
-            detectoe_label = self.query(test_data)
-            print("识别结果：" + str(detectoe_label)+ "    测试标签：" + str(label) + '\n')
-            if label == detectoe_label:
+            detector_label = self.query(test_data)
+            print("识别结果：" + str(detector_label)+ "    测试标签：" + str(label))
+            if label == detector_label:
                 scorecard.append(1)
             else:
                 scorecard.append(0)
@@ -83,6 +89,16 @@ class NeuralNetWork:
         file.close()
         pass
 
+    # 识别单个图片
+    def detector_image(self, image_path):
+        print("测试图片：", image_path)
+        image = imageio.imread(image_path, as_gray = True)
+        image_data = image.reshape(self.config.image_height * self.config.image_width)
+        detector_label = self.query(image_data)
+        print("识别结果：", detector_label)
+        return detector_label
+
+    # 保存训练出的权值矩阵
     def save_train_data(self):
         print("Saving data...")
         file = open(self.config.save_path, 'w')
@@ -99,6 +115,7 @@ class NeuralNetWork:
         file.close()
         pass
 
+    # 读取权值矩阵
     def read_train_data(self):
         print("Reading data...")
         file = open(self.config.save_path)
@@ -122,5 +139,4 @@ class NeuralNetWork:
                         continue
                     data_list.append(data)
                 self.who = np.asfarray(data_list)
-                pass
         pass

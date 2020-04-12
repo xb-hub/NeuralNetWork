@@ -1,6 +1,7 @@
 import configparser
 
 class Config:
+    # 读取配置文件
     def __init__(self, config_path):
         cf = configparser.ConfigParser()
         cf.read(config_path)
