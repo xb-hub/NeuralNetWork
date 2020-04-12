@@ -1,7 +1,12 @@
 import numpy as np
 import scipy.special
 import imageio
-from config import Config
+
+import  os, sys
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(BASE_DIR + "/..")
+
+from net_work.config import Config
 
 class NeuralNetWork:
     # 初始化BP神经网络
@@ -22,7 +27,7 @@ class NeuralNetWork:
         inputs = np.array(train_data, ndmin=2).T
         targets = np.array(target_data, ndmin=2).T
 
-        hidden_inputs = np.dot(self.wih, inputs);
+        hidden_inputs = np.dot(self.wih, inputs)
         hidden_outputs = self.activation_function(hidden_inputs)
 
         final_inputs = np.dot(self.who, hidden_outputs)
@@ -102,7 +107,7 @@ class NeuralNetWork:
     def save_train_data(self):
         print("Saving data...")
         file = open(self.config.save_path, 'w')
-        file .write("wih : ");
+        file .write("wih : ")
         for line in self.wih:
             for data in line:
                 file.write(str(data) + ' ')

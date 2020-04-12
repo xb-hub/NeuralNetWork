@@ -1,4 +1,8 @@
 # BP神经网络识别手写数字
+### 开发环境
+- 系统：macos
+- ide：pycharm
+
 ```
 .
 ├── README.md
@@ -16,8 +20,8 @@
 │   └── detector_demo.py    // 读取保存的权值矩阵进行识别
 ├── image                   // 数据集
 │   ├── num_test
-│   │   ├── create_link_linux.sh
-│   │   └── create_link_mac.sh
+│   │   ├── create_link_linux.sh    // linux版本创建测试集图片路径及标签脚本
+│   │   └── create_link_mac.sh      // mac版本创建测试集图片路径及标签脚本
 │   └── num_train
 │       ├── create_link_linux.sh
 │       └── create_link_mac.sh
@@ -33,7 +37,12 @@
     └── net_work.py         // BP神经网络
 
 ```
-## 运行步骤
+### 数据集处理
+```
+- cd config
+- python3 data_process.py
+```
+### 运行步骤
 ```
 - cd demo
 - python demo.py    // 训练并识别，保存权值矩阵
