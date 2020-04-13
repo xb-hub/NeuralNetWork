@@ -43,9 +43,9 @@ class NeuralNetWork:
         pass
 
     # 训练数据集
-    def process(self):
+    def process(self, train_path):
         print("trainning data...")
-        file = open(self.config.train_dataset_path)
+        file = open(train_path)
         num_data = file.readlines()
         for e in range(self.config.iterator):
             for num in num_data:
@@ -74,9 +74,9 @@ class NeuralNetWork:
         pass
 
     # 识别测试集
-    def detector(self):
+    def detector(self, test_path):
         print("detectoring data...")
-        file = open(self.config.test_dataset_path)
+        file = open(test_path)
         num_data = file.readlines()
         scorecard = []
         for num in num_data:
