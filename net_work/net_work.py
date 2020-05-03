@@ -90,7 +90,7 @@ class NeuralNetWork:
             else:
                 scorecard.append(0)
         scorecard_array = np.asarray(scorecard)
-        print("准确率: ", scorecard_array.sum() / scorecard_array.size)
+        print("准确率: {}%".format(scorecard_array.sum() / scorecard_array.size * 100))
         file.close()
         pass
 

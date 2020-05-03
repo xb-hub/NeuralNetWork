@@ -4,7 +4,7 @@ import numpy as np
 
 class ImageProcess:
     def __init__(self):
-        self.imagePath = "../image/number.jpg"
+        self.imagePath = "../image/number_1.jpg"
         self.dx = 15
         self.dy = 15
 
@@ -103,5 +103,6 @@ class ImageProcess:
                 cv2.putText(image, str(digit), (x - 10, y - 10),
                             cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 2)
         cv2.imshow("image", image)
+        cv2.imwrite("../image/detector_result.jpg", image)
         cv2.waitKey(0)
 
