@@ -3,7 +3,7 @@ image_width = 28
 image_height = 28
 
 [network]
-iterator_times = 5
+iterator_times = 100
 input_dim = 784
 hidden_dim = 200
 output_dim = 10

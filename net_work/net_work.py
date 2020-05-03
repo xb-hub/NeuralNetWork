@@ -145,3 +145,11 @@ class NeuralNetWork:
                     data_list.append(data)
                 self.who = np.asfarray(data_list)
         pass
+
+    def predict(self):
+        self.read_train_data()
+        
+
+    # 数字图像尺寸标准化（28*28）
+    def n_resize(self):
+        pass

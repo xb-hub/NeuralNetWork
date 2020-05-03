@@ -37,7 +37,22 @@
     └── net_work.py         // BP神经网络
 
 ```
-### 数据集处理
+### config路径配置
+```
+[datapath]
+train_path = ../config/train.txt    // 训练图片路径
+test_path = ../config/test.txt      // 测试图片路径
+train_dataset_path = ../config/train_dataset.txt    // 训练标签特征值保存路径
+test_dataset_path = ../config/test_dataset.txt      // 测试标签特征值保存路径
+save_path = ../data/train_data.txt                  // 训练得出的权值矩阵保存路径
+mnist_train_path = ../mnist_dataset/mnist_train.csv // mnist数据集
+mnist_test_path = ../mnist_dataset/mnist_test.csv   // mnist数据集
+```
+### 相关库安装
+```
+pip3 install -r requirements.txt
+```
+### 图片数据集处理
 ```
 - cd config
 - python3 data_process.py
@@ -45,7 +60,7 @@
 ### 运行步骤
 ```
 - cd demo
-- python demo.py    // 训练并识别，保存权值矩阵
-- python3 detector.py // 读取训练数据识别
+- python demo.py    // 训练并识别测试集，保存权值矩阵
+- python3 detector.py // 读取图片识别
 ```
 
