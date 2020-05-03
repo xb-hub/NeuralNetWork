@@ -3,8 +3,8 @@ import mahotas
 import numpy as np
 
 class ImageProcess:
-    def __init__(self):
-        self.imagePath = "../image/number_1.jpg"
+    def __init__(self, imagePath):
+        self.imagePath = imagePath
         self.dx = 15
         self.dy = 15
 
@@ -64,7 +64,6 @@ class ImageProcess:
 
     def process(self, network):
         # 加载被分类的图片
-        image_process = ImageProcess()
         image = cv2.imread(self.imagePath)
         size = image.shape
         image = cv2.resize(image, (int(size[1] / 5), int(size[0] / 5)))
@@ -88,14 +87,14 @@ class ImageProcess:
                 thresh[thresh > T] = 255
                 # 过滤掉颜色更亮的背景
                 thresh = cv2.bitwise_not(thresh)
-                thresh = image_process.deskew(thresh, network.config.image_width)
-                thresh = image_process.center_extent(thresh, (network.config.image_width, network.config.image_height))
+                thresh = self.deskew(thresh, network.config.image_width)
+                thresh = self.center_extent(thresh, (network.config.image_width, network.config.image_height))
                 # 测试预处理效果
                 thresh = thresh.reshape(28 * 28)
 
                 # 根据模型来预测输出
                 digit = network.query(thresh)
-                print("I think that number is: {}".format(digit))
+                print("识别结果是: {}".format(digit))
 
                 # 把识别出的数字用绿色框显示出来
                 cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 1)

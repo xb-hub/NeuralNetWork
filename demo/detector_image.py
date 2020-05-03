@@ -5,7 +5,7 @@ from net_work.net_work import NeuralNetWork
 from net_work.image_process import ImageProcess
 
 def main():
-    image_process = ImageProcess()
+    image_process = ImageProcess("../image/number_0.jpg")
     network = NeuralNetWork("../config/config.txt")
     network.read_train_data()
     image_process.process(network)
