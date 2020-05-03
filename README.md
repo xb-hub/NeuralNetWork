@@ -17,7 +17,8 @@
 │   └── train_data.txt      // 保存训练完成后的权值矩阵
 ├── demo
 │   ├── demo.py             // 训练并测试，保存权值矩阵
-│   └── detector_demo.py    // 读取保存的权值矩阵进行识别
+│   ├── detector_demo.py    // 读取保存的权值矩阵进行识别
+│   └── detector_image.py   // 识别自己手写数字
 ├── image                   // 数据集
 │   ├── num_test
 │   │   ├── create_link_linux.sh    // linux版本创建测试集图片路径及标签脚本
@@ -34,6 +35,7 @@
 ├── net_work
     ├── __init__.py
     ├── config.py           // 读取配置文件参数
+    ├── image_process.py    // 处理自己手写数字图像并识别
     └── net_work.py         // BP神经网络
 
 ```
@@ -52,15 +54,25 @@ mnist_test_path = ../mnist_dataset/mnist_test.csv   // mnist数据集
 ```
 pip3 install -r requirements.txt
 ```
+### net_work API
+```
+- def process(self, train_path) // 训练，train_path：训练集路径
+- def detector(self, test_path) // 测试，test_path：测试集路径
+```
 ### 图片数据集处理
 ```
+- 修改训练集和测试集路径
 - cd config
 - python3 data_process.py
-```
-### 运行步骤
-```
 - cd demo
-- python demo.py    // 训练并识别测试集，保存权值矩阵
-- python3 detector.py // 读取图片识别
+- python demo.py        // 训练并识别测试集，保存权值矩阵
+- python3 detector.py   // 读取图片识别
+```
+### minst数据集
+```
+- 修改训练集和测试集路径
+- cd demo
+- python demo.py            // 训练并识别测试集，保存权值矩阵
+- python3 detector_image.py // 读取自己手写数字图片识别
 ```
 
